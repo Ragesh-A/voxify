@@ -1,25 +1,50 @@
 const userInp = document.getElementById('userInp');
 const playBtn = document.getElementById('playBtn');
 const stopBtn = document.getElementById('stopBtn');
+const voicesSelect = document.getElementById('voices');
 
+if ('speechSynthesis' in window) {
+	init();
+} else {
+	alert('Speech Synthesis API not supported in this browser.');
+}
 
-const synth = window.speechSynthesis;
+function init() {
+	const synth = window.speechSynthesis;
 
-let utterThis = new window.SpeechSynthesisUtterance();
-utterThis.lang = 'en-Us';
-utterThis.volume = 1;
+	synth.onvoiceschanged = function () {
+		const voices = synth.getVoices();
 
+		voices.forEach((voice) => {
+			const option = document.createElement('option');
+			option.value = voice.lang;
+			option.textContent = voice.name;
+			voicesSelect.append(option);
+		});
+	};
 
-playBtn.addEventListener('click', () => {
-  if (synth.paused) {
-    synth.resume();
-  } else {
-    console.log(userInp.value);
-    utterThis.text = userInp.value;
-    synth.speak(utterThis);
-  }
-})
+	const utterThis = new window.SpeechSynthesisUtterance();
+	utterThis.lang = 'en-Us';
+	utterThis.volume = 1;
 
-stopBtn.addEventListener('click', () => {
-  synth.pause()
-})
+	voicesSelect.addEventListener('change', () => {
+		const selectedVoice = voicesSelect.value;
+		const voice = synth.getVoices().find((v) => v.lang === selectedVoice);
+		if (voice) {
+			utterThis.voice = voice;
+		}
+	});
+
+	playBtn.addEventListener('click', () => {
+		if (synth.paused) {
+			synth.resume();
+		} else {
+			utterThis.text = userInp.value;
+			synth.speak(utterThis);
+		}
+	});
+
+	stopBtn.addEventListener('click', () => {
+		synth.pause();
+	});
+}
