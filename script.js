@@ -36,10 +36,12 @@ function init() {
 	});
 
 	playBtn.addEventListener('click', () => {
+		const textToSpeak = userInp.value.trim()
+		if (!textToSpeak) return;
 		if (synth.paused) {
 			synth.resume();
 		} else {
-			utterThis.text = userInp.value;
+			utterThis.text = textToSpeak;
 			synth.speak(utterThis);
 		}
 	});

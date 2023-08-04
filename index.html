@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Voxify</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <textarea name="userInp" id="userInp" cols="30" rows="10" placeholder="enter text here..."></textarea>
-  <select name="" id="voices"></select>
-  <button type="button" id="playBtn">play</button>
-  <button type="button" id="stopBtn">stop</button>
+  <div class="">
+    <h1>Voxify</h1>
+  </div>
+  <div class="container">
+    <textarea name="userInp" id="userInp" cols="30" rows="10" placeholder="enter text here to speak..."></textarea>
+    <select name="" id="voices"></select>
+    <div class="buttons-wrap">
+      <button type="button" id="playBtn" class="btn">play</button>
+      <button type="button" id="stopBtn" class="btn">stop</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
+
 </html>

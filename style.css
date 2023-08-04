@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body{
+  overflow: hidden;
+}
+
+body {
+  padding: 2rem;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('grid.svg'),
+  radial-gradient(transparent, black),
+  radial-gradient(rgb(22, 40, 58), rgb(31, 31, 31));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+h1 {
+  color: white;
+  font-size: 3rem;
+  /* font-family: ; */
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+  gap: .5rem;
+}
+
+#userInp {
+  min-height: 75%;
+  padding: 1rem;
+  resize: vertical;
+  max-height: 75%;
+  background-color: #fafafa0f;
+  border: 2px solid white;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+}
+
+#voices {
+  padding: .5rem;
+  border-radius: .4rem;
+  border: 1px solid white;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(45deg, rgb(11, 44, 77), rgb(89, 108, 160));
+  outline: none;
+  text-align: center;
+}
+#voices option {
+  padding: 200px;
+  color: black;
+}
+#voices option:hover {
+  background-color: purple;
+}
+
+.buttons-wrap{
+   display: flex;
+   gap: 10px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: .7rem .5rem;
+  flex-grow: 1;
+  background-color: rgb(5, 97, 255);
+  color: white;
+  border-radius: .25rem;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    display: block;
+  }
+  #userInp {
+    min-height: 55%;
+  }
+}
