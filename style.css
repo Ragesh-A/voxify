@@ -74,6 +74,7 @@ h1 {
   background-color: rgb(5, 97, 255);
   color: white;
   border-radius: .25rem;
+  border: none;
 }
 
 @media screen and (max-width: 768px) {
